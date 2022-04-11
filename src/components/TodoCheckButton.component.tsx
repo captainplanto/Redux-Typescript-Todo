@@ -7,18 +7,12 @@ interface IStyle {
   Icompleted?: boolean;
 }
 
-const TodoCheckButtonComponent = () => {
+const TodoCheckButtonComponent = ({ completed }: { completed: boolean }) => {
   const Icompleted = useAppSelector((state) => state.myTodo.todos);
-  const dispatch = useAppDispatch();
-  console.log(Icompleted);
 
   return (
-    <IconBackground Icompleted={Icompleted}>
-      <img
-        src={IconCheck}
-        alt="Icon-check"
-        onClick={() => dispatch(completedTodos(!Icompleted))}
-      />
+    <IconBackground Icompleted={completed}>
+      <img src={IconCheck} alt="Icon-check" />
     </IconBackground>
   );
 };
@@ -36,6 +30,13 @@ const IconBackground = styled.div<IStyle>`
   justify-content: center;
   border-radius: 2rem;
   border: 1px solid var( --Dark-Grayish-Blue);
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
   }
  
 `;

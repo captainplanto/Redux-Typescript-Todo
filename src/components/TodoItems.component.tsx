@@ -4,12 +4,13 @@ import TodoBackground from "./TodoBackground.component";
 import SortingFilter from "./SortingFilter.component";
 import FooterFilter from "./FooterFilter.component";
 import TodoList from "./TodoList.component";
+import TodoListComponent from "./TodoList.component";
 
 const TodoItemComponent = () => {
   return (
     <TodoStyle>
       <TodoBackground>
-        <TodoList />
+        <TodoListComponent />
         <FooterFilter />
       </TodoBackground>
       {window.innerWidth <= 480 && (

@@ -41,7 +41,7 @@ const TodoListComponent = () => {
   //   </List>}
   // );
 
-  const todoItem = todoInput.todos.map(({ id, title, completed }) => (
+  const todoItem = todoInput.completedItems.map(({ id, title, completed }) => (
     <TodoStyle
       key={id}
       Icompleted={completed}
