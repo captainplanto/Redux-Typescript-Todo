@@ -17,6 +17,13 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.reportWebVitals.ts
+.serviceWorker.ts
+.setupTests.ts
+.react-app-env.d.ts
+.App.test.tsx
+
+
 
 npm-debug.log*
 yarn-debug.log*
