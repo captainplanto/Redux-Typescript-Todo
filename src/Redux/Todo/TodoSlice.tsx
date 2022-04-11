@@ -1,6 +1,6 @@
 import { ActionTypes } from "@mui/base";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4, v4 } from "uuid";
+import { RootState } from "../store";
 interface ITodo {
   input: string;
   isToggle: boolean;
@@ -57,4 +57,15 @@ export const todoSlice = createSlice({
 });
 export const { addTodo, onInput, reset, toggle, completedTodos } =
   todoSlice.actions;
+
+
+
+
+
+
+
+
+
+
+
 export default todoSlice.reducer;
