@@ -46,19 +46,9 @@ export const todoSlice = createSlice({
       // state.todos[index] = action.payload;
 
       const todo = state.todos.find((item) => item.id === action.payload);
-
       if (todo) {
-        let { completed } = todo;
-        completed = !completed;
+        todo.completed = !todo?.completed;
       }
-      // if (todo) {
-      //   let { completed } = todo;
-      //   if (completed === false) {
-      //     completed = true;
-      //   } else {
-      //     completed = false;
-      //   }
-      // }
       console.log("item not found");
     },
 
