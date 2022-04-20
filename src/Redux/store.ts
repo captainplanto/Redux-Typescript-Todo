@@ -1,9 +1,10 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import InputReducer from './Todo/TodoSlice'
-
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import InputReducer from "./Todo/TodoSlice";
+//import SortingReducer from "./Filter/FilterSlice";
 export const store = configureStore({
   reducer: {
-  myTodo:InputReducer
+    myTodo: InputReducer,
+    //filter: SortingReducer,
   },
 });
 

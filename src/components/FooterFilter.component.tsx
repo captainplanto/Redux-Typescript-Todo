@@ -1,22 +1,37 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import SortingComponent from "./SortingFilter.component";
-import { useAppDispatch, useAppSelector } from "../Redux/hooks";
+import { useAppSelector, useAppDispatch } from "../Redux/hooks";
+import {
+  clearCompletedFilter,
+  completedTodos,
+  tabIndex,
+} from "../Redux/Todo/TodoSlice";
 
 const FooterFilter = () => {
-  const IToggle = useAppSelector((state) => state.myTodo.isToggle);
-  const todoInput = useAppSelector((state) => state.myTodo.input);
+  const itemToComplete = useAppSelector((state) =>
+    state.myTodo.todos.filter((todo) => todo.completed === false)
+  );
+  const activeTab = useAppSelector((state) => state.myTodo.tabIndex);
+  const dispatch = useAppDispatch();
+
   return (
     <Footer>
       {window.innerWidth > 480 ? (
         <ul>
-          <li>{todoInput.length < 2 ? '1 items left' : '2 items left'}</li>
-            <SortingComponent />
-          <li>Clear Completed</li>
+          <li>
+            {itemToComplete.length}
+            {itemToComplete.length < 2 ? "item left" : "items left"}
+          </li>
+          
+          <SortingComponent />
         </ul>
       ) : (
         <MobileSort>
-          <li>3 items Left</li>
+          <li>
+            {itemToComplete.length}  
+            {itemToComplete.length < 2 ? "item left" : "items left"}
+          </li>
           <li>Clear Completed</li>
         </MobileSort>
       )}
@@ -25,11 +40,11 @@ const FooterFilter = () => {
 };
 export default FooterFilter;
 const Footer = styled.div`
- padding-top: 2rem;
+  padding-top: 2rem;
   ul {
     display: flex;
-    justify-content: space-between;
-   
+ justify-content:space-between;
+
     li {
       font-size: 14px;
       color: var(--Dark-Grayish-Blue);
@@ -43,8 +58,6 @@ const Footer = styled.div`
     }
   }
 `;
-
-
 
 const MobileSort = styled.div`
   display: flex;

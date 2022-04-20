@@ -1,17 +1,32 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import TodoBackground from "./TodoBackground.component";
 import SortingFilter from "./SortingFilter.component";
 import FooterFilter from "./FooterFilter.component";
-import TodoList from "./TodoList.component";
 import TodoListComponent from "./TodoList.component";
+import ActiveComponent from "./ActiveFilter.component";
+import ClearCompletedComponent from "./ClearCompleted.component";
+import CompletedComponent from "./CompletedFilter.component";
+import { useAppSelector } from "../Redux/hooks";
+
 
 const TodoItemComponent = () => {
+  const activeTab = useAppSelector((state) => state.myTodo.tabIndex);
   return (
     <TodoStyle>
       <TodoBackground>
-        <TodoListComponent />
-        <FooterFilter />
+        {activeTab === 1 ? (
+          <TodoListComponent />
+        ) : activeTab === 2 ? (
+          <ActiveComponent />
+        ) : activeTab === 3 ? (
+          <CompletedComponent />
+        ) : activeTab === 4 ? (
+          <ClearCompletedComponent />
+        ) : (
+          <p>No Tab selected</p>
+        )}
+        <FooterFilter/>
       </TodoBackground>
       {window.innerWidth <= 480 && (
         <SortBackground>

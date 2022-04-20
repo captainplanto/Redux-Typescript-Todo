@@ -15,15 +15,19 @@ const style = {
 
 interface IStyle {
   Icompleted?: boolean;
+
 }
 
 const TodoListComponent = () => {
   const todoInput = useAppSelector((state) => state.myTodo);
-  const dispatch = useAppDispatch();
-  
 
-  const todoItem = todoInput.todos.map(({ id, title, completed }) => (
+  const dispatch = useAppDispatch();
+
+
+
+  const todoItem = todoInput.completedItems.map(({ id, title, completed }) => (
     <TodoStyle
+
       key={id}
       Icompleted={completed}
       onClick={() => dispatch(completedTodos(id))}
@@ -34,7 +38,7 @@ const TodoListComponent = () => {
             <TodoCheckButton completed={completed} />
             {title}
           </li>
-          <TodoDeleteButton id={id} />
+          <TodoDeleteButton id={id}  />
         </StyleDiv>
         <Divider />
       </List>

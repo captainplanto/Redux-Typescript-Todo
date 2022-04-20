@@ -1,8 +1,7 @@
 import React, { Children, FC } from "react";
 import styled from "styled-components";
-import SortingComponent from "./SortingFilter.component";
-import { toggle } from "../Redux/Todo/TodoSlice";
-import { useAppDispatch, useAppSelector } from "../Redux/hooks";
+
+import { useAppSelector } from "../Redux/hooks";
 
 interface IBackground {
   children?: any;
@@ -14,11 +13,10 @@ interface IStyle {
 
 const TodoBackgroundComponent: FC<IBackground> = ({
   children,
-
   ...props
 }) => {
   const IToggle = useAppSelector((state) => state.myTodo.isToggle);
-  const dispatch = useAppDispatch();
+
   return <BackgroundList IToggle={IToggle}>{children}</BackgroundList>;
 };
 export default TodoBackgroundComponent;

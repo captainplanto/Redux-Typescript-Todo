@@ -1,9 +1,7 @@
-import React, { FC, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
-import { addTodo, onInput } from "../Redux/Todo/TodoSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
-import { completedTodos } from "../Redux/Todo/TodoSlice";
+import { activeFilter } from "../Redux/Todo/TodoSlice";
 import TodoCheckButton from "./TodoCheckButton.component";
 import TodoDeleteButton from "./TodoDeleteButton.component";
 import List from "@mui/material/List";
@@ -21,31 +19,12 @@ interface IStyle {
 
 const TodoListComponent = () => {
   const todoInput = useAppSelector((state) => state.myTodo);
-
   const dispatch = useAppDispatch();
-  console.log(todoInput);
-  // const todoItem = todoInput.map((item) =>
-  //  { const {id, title, completed} = item
-  //   return <List sx={style}>
-  //     <StyleDiv>
-  //       <TodoCheckButton />
-  //       <li
-  //         key={item.id}
-  //         onClick={() => dispatch(completedTodos(item.completed))}
-  //       >
-  //         {item.title}
-  //       </li>
-  //       <TodoDeleteButton />
-  //     </StyleDiv>
-  //     <Divider />
-  //   </List>}
-  // );
-
-  const todoItem = todoInput.completedItems.map(({ id, title, completed }) => (
+  const todoItem = todoInput.activeItems.map(({ id, title, completed }) => (
     <TodoStyle
       key={id}
       Icompleted={completed}
-      onClick={() => dispatch(completedTodos(id))}
+      onClick={() => dispatch(activeFilter())}
     >
       <List>
         <StyleDiv>
@@ -53,7 +32,7 @@ const TodoListComponent = () => {
             <TodoCheckButton completed={completed} />
             {title}
           </li>
-          <TodoDeleteButton />
+          <TodoDeleteButton id={id} />
         </StyleDiv>
         <Divider />
       </List>

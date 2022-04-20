@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import IconCheck from "../Assets/Images/icon-check.svg";
-import { useAppDispatch, useAppSelector } from "../Redux/hooks";
-import { completedTodos } from "../Redux/Todo/TodoSlice";
+
+
 interface IStyle {
   Icompleted?: boolean;
 }
 
 const TodoCheckButtonComponent = ({ completed }: { completed: boolean }) => {
-  const Icompleted = useAppSelector((state) => state.myTodo.todos);
-
   return (
     <IconBackground Icompleted={completed}>
       <img src={IconCheck} alt="Icon-check" />

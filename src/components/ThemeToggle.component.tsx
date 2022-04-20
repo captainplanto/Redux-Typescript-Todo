@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import IconSun from "../Assets/Images/icon-sun.svg";
 import IconMoon from "../Assets/Images/icon-moon.svg";
-import InputComponent from "./TodoInput.component";
 import { toggle } from "../Redux/Todo/TodoSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
 

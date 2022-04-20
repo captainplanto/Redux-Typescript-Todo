@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Main from "./Pages/Main";
-import { toggle } from "../src/Redux/Todo/TodoSlice";
-import { useAppDispatch, useAppSelector } from "../src/Redux/hooks";
+
+import {  useAppSelector } from "../src/Redux/hooks";
 
 interface IStyle {
   IToggle?: boolean;

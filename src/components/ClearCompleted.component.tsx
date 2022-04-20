@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
-import { completedTodos } from "../Redux/Todo/TodoSlice";
+import { clearCompletedFilter } from "../Redux/Todo/TodoSlice";
 import TodoCheckButton from "./TodoCheckButton.component";
 import TodoDeleteButton from "./TodoDeleteButton.component";
 import List from "@mui/material/List";
@@ -20,13 +20,11 @@ interface IStyle {
 const TodoListComponent = () => {
   const todoInput = useAppSelector((state) => state.myTodo);
   const dispatch = useAppDispatch();
-  
-
-  const todoItem = todoInput.todos.map(({ id, title, completed }) => (
+  const todoItem = todoInput.clearCompleted.map(({ id, title, completed }) => (
     <TodoStyle
       key={id}
       Icompleted={completed}
-      onClick={() => dispatch(completedTodos(id))}
+      onClick={() => dispatch(clearCompletedFilter())}
     >
       <List>
         <StyleDiv>
