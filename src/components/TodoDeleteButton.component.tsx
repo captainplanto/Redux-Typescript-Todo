@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import IconCross from "../Assets/Images/icon-cross.svg";
-import { useAppDispatch} from "../Redux/hooks";
+import { useAppDispatch } from "../Redux/hooks";
 import { deleteTodo } from "../Redux/Todo/TodoSlice";
 
-const TodoDeleteButtonComponent = ({id}:{id:number}) => {
+const TodoDeleteButtonComponent = ({ id }: { id: number }) => {
   const dispatch = useAppDispatch();
 
   return (
